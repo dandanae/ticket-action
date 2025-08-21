@@ -1,0 +1,15 @@
+name: "Ticket Notifier"
+inputs:
+  product-id:
+    required: true
+  schedule-id:
+    required: true
+  discord-webhook-url:
+    required: true
+  discord-log-webhook-url:
+    required: true
+  cookie:
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
