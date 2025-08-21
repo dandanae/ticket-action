@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check
-        uses: dandanae/ticket-actions@master
+        uses: dandanae/ticket-actions@main
         with:
           product-id: 211782
           schedule-id: 100001, 100002, 100003
