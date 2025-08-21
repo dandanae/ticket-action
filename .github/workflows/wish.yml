@@ -13,6 +13,7 @@ jobs:
         with:
           product-id: 211782
           schedule-id: 100001, 100002, 100003
+          discord-id: ${{ secrets.DISCORD_ID }}
           discord-webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           discord-log-webhook-url: ${{ secrets.DISCORD_LOG_WEBHOOK_URL }}
           cookie: ${{ secrets.COOKIE }}

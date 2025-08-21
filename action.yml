@@ -4,6 +4,8 @@ inputs:
     required: true
   schedule-id:
     required: true
+  discord-id:
+    required: true
   discord-webhook-url:
     required: true
   discord-log-webhook-url:

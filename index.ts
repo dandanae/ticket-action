@@ -3,21 +3,23 @@ import * as core from "@actions/core";
 import axios from "axios";
 
 (async () => {
-  const [prodId, scheduleNosRaw, cookie, webhookUrl, logWebhookUrl] = [
-    "product-id",
-    "schedule-id",
-    "cookie",
-    "discord-webhook-url",
-    "discord-log-webhook-url",
-  ].map((name) => {
-    const value = core.getInput(name);
-    if (!value) {
-      throw new Error(
-        `melon-ticket-actions: Please set ${name} input parameter`,
-      );
-    }
-    return value;
-  });
+  const [prodId, scheduleNosRaw, cookie, webhookUrl, logWebhookUrl, discordID] =
+    [
+      "product-id",
+      "schedule-id",
+      "cookie",
+      "discord-webhook-url",
+      "discord-log-webhook-url",
+      "discord-id",
+    ].map((name) => {
+      const value = core.getInput(name);
+      if (!value) {
+        throw new Error(
+          `melon-ticket-actions: Please set ${name} input parameter`,
+        );
+      }
+      return value;
+    });
 
   const scheduleNos = scheduleNosRaw.split(",").map((s) => s.trim());
 
@@ -114,7 +116,7 @@ import axios from "axios";
       if (count > 0) {
         await sendMessage(
           webhookUrl,
-          `[${day}] ${block.sntv.a} 구역에 잔여 좌석 ${count}개 발생! https://ticket.melon.com/performance/index.htm?prodId=${prodId}`,
+          `<@${discordID}> [${day}] ${block.sntv.a} 구역에 잔여 좌석 ${count}개 발생! https://ticket.melon.com/performance/index.htm?prodId=${prodId}`,
         );
       }
     }
