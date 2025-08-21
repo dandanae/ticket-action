@@ -122,7 +122,7 @@ import axios from "axios";
 
   await sendMessage(logWebhookUrl, "서칭 끝");
 })().catch((e) => {
-  const webhookUrl = core.getInput("discord-webhook-url");
+  const webhookUrl = core.getInput("discord-log-webhook-url");
   axios.post(webhookUrl, { content: `오류 발생! ${e.message}` });
   console.error(e.stack); // tslint:disable-line
   core.setFailed(e.message);
