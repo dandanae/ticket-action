@@ -1,0 +1,28 @@
+{
+  "Ticket Action Workflow": {
+    "scope": "yaml",
+    "prefix": ["ta"],
+    "description": "GitHub Actions workflow for dandanae/ticket-action",
+    "body": [
+      "name: ${1:melon-ticket-}",
+      "on:",
+      "  schedule:",
+      "    - cron: \"${2:*/5 * * * *}\"",
+      "  workflow_dispatch: {}",
+      "",
+      "jobs:",
+      "  check:",
+      "    runs-on: ubuntu-latest",
+      "    steps:",
+      "      - name: check",
+      "        uses: dandanae/ticket-action@main",
+      "        with:",
+      "          product-id: ${3:000000}",
+      "          schedule-id: ${4|100001,100002,100003|}",
+      "          discord-id: \\${{ secrets.DISCORD_ID }}",
+      "          discord-webhook-url: \\${{ secrets.DISCORD_WEBHOOK_URL }}",
+      "          discord-log-webhook-url: \\${{ secrets.DISCORD_LOG_WEBHOOK_URL }}",
+      "          cookie: \\${{ secrets.COOKIE }}"
+    ]
+  }
+}
