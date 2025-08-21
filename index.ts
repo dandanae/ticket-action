@@ -110,7 +110,7 @@ import axios from "axios";
 
     const blocks = await getBlockList(scheduleNo);
     for (const block of blocks) {
-      await sleep(1000);
+      await sleep(1500);
 
       const count = await getRemainSeatInBlock(scheduleNo, block);
       if (count > 0) {
