@@ -1,0 +1,18 @@
+name: melon-ticket-2025-wish
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        uses: dandanae/ticket-actions@master
+        with:
+          product-id: 211782
+          schedule-id: 100001, 100002, 100003
+          discord-webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          discord-log-webhook-url: ${{ secrets.DISCORD_LOG_WEBHOOK_URL }}
+          cookie: ${{ secrets.COOKIE }}
