@@ -1,7 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const core = require("@actions/core");
-const axios = require("axios");
+import * as core from "@actions/core";
+import axios from "axios";
 
 (async () => {
   const [prodId, scheduleNosRaw, cookie, webhookUrl, logWebhookUrl] = [
@@ -34,7 +33,7 @@ const axios = require("axios");
   };
 
   // === 블록 리스트 조회 ===
-  async function getBlockList(scheduleNo) {
+  async function getBlockList(scheduleNo: string) {
     const body = new URLSearchParams({
       prodId,
       scheduleNo,
@@ -56,7 +55,7 @@ const axios = require("axios");
   }
 
   // === 블록에 남은 좌석 조회 ===
-  async function getRemainSeatInBlock(scheduleNo, block) {
+  async function getRemainSeatInBlock(scheduleNo: string, block: any) {
     const body = new URLSearchParams({
       prodId,
       scheduleNo,
@@ -78,18 +77,20 @@ const axios = require("axios");
     let count = 0;
 
     if (datas.seatData) {
-      count = datas.seatData.st[0].ss.filter((st) => st.sid != null).length;
+      count = datas.seatData.st[0].ss.filter(
+        (st: any) => st.sid != null,
+      ).length;
     }
 
     return count;
   }
 
   // === Discord 통지 ===
-  async function sendMessage(url, content) {
+  async function sendMessage(url: string, content: string) {
     await axios.post(url, { content });
   }
 
-  function sleep(ms) {
+  function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
